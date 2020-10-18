@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        div {
+            margin: 100px auto;
+            width: 200px;
+            height: 30px;
+            border: 1px solid #ccc;
+        }
+
+        input {
+            outline: none;
+            height: 100%;
+            width: 100%;
+            border: none;
+            color: #ccc;
+            text-indent: 1em;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <input type="text" value="niconiconi~">
+    </div>
+    <script>
+        var inp = document.querySelector('input')
+        inp.onfocus = function () {
+            if (this.value === 'niconiconi~') {
+                this.value = ''
+                this.style.border = '1px solid pink'
+                this.style.color = '#000'
+            } else {
+                this.style.border = '1px solid pink'
+                this.style.color = '#000'
+            }
+        }
+        inp.onblur = function () {
+            if (this.value === '') {
+                this.value = 'niconiconi~'
+                this.style.border = '1px solid #ccc'
+                this.style.color = '#ccc'
+            }else {
+                this.style.border = '1px solid #ccc'
+                this.style.color = '#ccc'
+            }
+        }
+    </script>
+</body>
+
+</html>

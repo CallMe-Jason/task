@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+    </style>
+</head>
+
+<body>
+    <button>添加元素</button>
+    <div class="box">
+        <ul>
+            <li>聂婷是队霸1</li>
+            <li>聂婷是队霸2</li>
+            <li>聂婷是队霸3</li>
+            <li>聂婷是队霸4</li>
+            <li>聂婷是队霸5</li>
+        </ul>
+    </div>
+    <script>
+        //获取元素
+        var ul = document.querySelector('ul')
+        var btn = document.querySelector('button')
+        var lis = document.querySelectorAll('li')
+        //添加操作
+        btn.addEventListener('click', function () {
+            //创建节点
+            var liNode = document.createElement('li')
+            //给节点赋值
+            liNode.innerHTML = '聂婷 is iron man'
+            //节点的位置
+            ul.insertBefore(liNode, ul.children[0])
+        })
+        //点击是添加背景颜色
+        ul.addEventListener('click', function (e) {
+            //重制li
+        lis = document.querySelectorAll('li')
+            //排它
+            for (var i = 0; i < lis.length; i++) {
+                lis[i].style.backgroundColor = ''
+            }
+            //获取点击的那个的样式并设置颜色
+            e.target.style.backgroundColor = 'red'
+        })
+    </script>
+</body>
+</html>

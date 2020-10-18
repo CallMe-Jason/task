@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            box-sizing: border-box;
+        }
+        li {
+            margin: 5px;
+            width: 200px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>聂婷是队霸1</li>
+        <li>聂婷是队霸2</li>
+        <li>聂婷是队霸3</li>
+        <li>聂婷是队霸4</li>
+    </ul>
+    <button>增加元素</button>
+    <script>
+        //获取元素
+        var ul = document.querySelector('ul')
+        var btn = document.querySelector('button')
+        var lis = document.querySelectorAll('li')
+        //添加事件
+        btn.onclick = function () {
+            // 创建节点
+            var liNode = document.createElement('li')
+            // 给节点赋值
+            liNode.innerHTML = '聂婷是灭霸'
+            //安排位置
+            ul.appendChild(liNode)
+        }
+        //监听器，点击事件
+        ul.addEventListener('click',function(e) {
+            //判断 点击的属性名是不是li,然后删除自己
+            if (e.target.nodeName.toLowerCase() === "li") e.target.remove();
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        function rgb () {
+            min = Math.ceil(0);
+            max = Math.floor(255);
+            return Math.floor(Math.random() * (max - min + 1)) + min; //含最大值，含最小值
+        }
+        var num1 = rgb()
+        var num2 = rgb()
+        var num3 = rgb()
+        // console.log(num1);
+        // console.log(num2);
+        // console.log(num3);
+        document.body.style.backgroundColor = `rgb(${num1},${num2},${num3})`
+    </script>
+</body>
+
+</html>

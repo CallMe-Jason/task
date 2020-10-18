@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            height: 1000px;
+            background-color: #000;
+        }
+
+        .pic {
+            position: relative;
+            float: left;
+            width: 300px;
+            height: 300px;
+            background-color: #fff;
+        }
+
+        .bic {
+            display: none;
+            float: left;
+            margin-left: 10px;
+            width: 300px;
+            height: 300px;
+            background-color: #fff;
+            overflow: hidden;
+        }
+
+        .yellow {
+            position: absolute;
+            display: none;
+            width: 100px;
+            height: 100px;
+            background-color: rgba(0, 0, 0, .3);
+            cursor: move;
+        }
+        .pic img {
+            width: 100%;
+            height: 100%;
+        }
+        .bic {
+            position: relative;
+        }
+        .bic img{
+            position: absolute;
+            width: 500px;
+            height: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="pic">
+            <img src="1.jpg" alt="">
+            <div class="yellow"></div>
+        </div>
+        <div class="bic">
+            <img src="1.jpg" alt="">
+        </div>
+    </div>
+    <script>
+        var pic = document.querySelector('.pic')
+        var yellow = document.querySelector('.yellow')
+        var bic = document.querySelector('.bic')
+        pic.addEventListener('mouseover', function () {
+            yellow.style.display = 'block'
+            bic.style.display = 'block'
+        })
+        pic.addEventListener('mouseout', function () {
+            yellow.style.display = 'none'
+            bic.style.display = 'none'
+        })
+        pic.addEventListener('mousemove', function (e) {
+            var x = e.pageX - this.offsetLeft
+            var y = e.pageY - this.offsetTop
+           
+            var maxX = pic.offsetWidth - yellow.offsetWidth
+            var maxY = pic.offsetHeight - yellow.offsetHeight
+            var X = x - yellow.offsetWidth / 2
+            var Y = y - yellow.offsetHeight / 2
+            if (X < 0) {
+                X = 0
+            }else if (X > maxX) {
+                X = maxX
+            }
+            if (Y < 0) {
+                Y = 0
+            }else if (Y > maxX) {
+                Y = maxY
+            }
+
+            yellow.style.left = X + 'px'
+            yellow.style.top = Y + 'px'
+            var bicImg = document.querySelector('.bic img')
+            var bicMax = bicImg.offsetWidth - bic.offsetWidth
+            var bicX = X * bicMax / maxX
+            var bicY = Y * bicMax / maxY
+            bicImg.style.left = -bicX + 'px'
+            bicImg.style.top = -bicY + 'px'
+        })
+    </script>
+</body>
+
+</html>

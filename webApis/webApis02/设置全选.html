@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        table {
+            text-align: center;
+            margin: 100px auto;
+            width: 300px;
+            border: 1px solid #ccc;
+        }
+
+        tr td {
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <td><input type="checkbox" name="" id=""></td>
+                <td>商品</td>
+                <td>价格</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="checkbox" name="" id=""></td>
+                <td>iphone8</td>
+                <td>8000</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="" id=""></td>
+                <td>iphone8</td>
+                <td>8000</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="" id=""></td>
+                <td>iphone8</td>
+                <td>8000</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="" id=""></td>
+                <td>iphone8</td>
+                <td>8000</td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        //获取thead的input和tbody的input的元素
+        var thead_input = document.querySelector('thead input')
+        var tbody_input = document.querySelectorAll('tbody input')
+        //设置点击事件，即thead的input点击时tbody的input也被点击
+        thead_input.onclick = function () {
+            //用点击checkbox时checked返回为true进行判断
+            if (thead_input.checked) {
+                //for循环遍历，thead的input为真则设置所有的tbody的input为真
+                for (var i = 0; i < tbody_input.length; i++) {
+                    tbody_input[i].checked = true
+                }
+            } else {
+                //否则为假
+                for (var i = 0; i < tbody_input.length; i++) {
+                    tbody_input[i].checked = false
+                }
+            }
+        }
+        //给下面的四个复选框注册事件，先遍历才能注册
+        for (var i = 0; i < tbody_input.length; i++) {
+              //注册事件
+            tbody_input[i].onclick = function () {
+              //利用input:checked.length来获取选中的个数，因为返回的是个数组，然后来判断选中的是否等于4
+                var num = document.querySelectorAll('tbody input:checked').length
+                //判断点击的个数是否为4
+                if (num === tbody_input.length) {
+                    thead_input.checked = true
+                } else {
+                    thead_input.checked = false
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
+<!-- 思路
+第一步：获取thead的input和tbody的input元素
+第二步：设置点击事件
+    1.当点击thead的input时，tbody的input也能被点击
+    2.利用input.checked，如果被点击则返回true，否则为false来进行判断
+    3.thead为true时，tbody遍历里面所有的input都为true，否则为false
+第三步：实现tbody全选中时thead也会选中
+    1.利用点击tbody的input的checked返回为真 的 个数 来进行判断
+    2.把这个个数赋值给一个变量
+    3.判断，这个变量的值等于tbody的input的长度的话，说明全部选中，那么thead的input的checked也赋值为true,否则为false -->

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .box {
+            margin: 0 auto;
+            width: 700px;
+            height: 100px;
+            /* background-color: pink; */
+        }
+
+        li {
+            float: left;
+            width: 100px;
+            height: 100px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            font-size: 20px;
+            line-height: 100px;
+            margin: 0 12.5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <ul>
+            <li>离开学还有</li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <script>
+        function app() {
+            function time(time) {
+                var now = new Date()
+                var nowTime = now.getTime()
+
+                var future = new Date(time)
+                var futureTime = future.getTime()
+
+                var timer = (futureTime - nowTime) / 1000
+                return d = Math.floor(timer / 60 / 60 / 24),
+                    h = Math.floor(timer / 60 / 60 % 24),
+                    m = Math.floor(timer / 60 % 60),
+                    s = Math.floor(timer % 60)
+            }
+            time('2020-10-07')
+            var li = document.querySelectorAll('li')
+            for (var i = 0; i < li.length; i++) {
+                li[1].innerHTML = `${d}天`
+                li[2].innerHTML = `${h}小时`
+                li[3].innerHTML = `${m}分`
+                li[4].innerHTML = `${s}秒`
+            }
+        }
+        app()
+        setInterval(app, 1000)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        td {
+            width: 150px;
+            height: 20px;
+            margin: 5px;
+            text-align: center;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" name="" id="uname">
+    <input type="email" name="" id="email">
+    <button>提交</button>
+    <hr>
+    <table>
+        <tr>
+            <td>姓名</td>
+            <td>邮箱</td>
+        </tr>
+    </table>
+    <script>
+        //获取元素
+        var btn = document.querySelector('button')
+        var uname = document.querySelector('#uname')
+        var email = document.querySelector('#email')
+        //以下两个元素为了方便添加节点
+        var table = document.querySelector('table')
+        var tr = document.querySelector('tr')
+        //设置事件
+        btn.onclick = function () {
+            //判断input里的值是否为空
+            if (uname.value == '' || email.value == '') {
+                alert('请输入信息')
+                return;
+            }
+            //继续 创建节点
+            var trNode = document.createElement('tr')
+            var td1Node = document.createElement('td')
+            var td2Node = document.createElement('td')
+            //令输入的input值等于td的内容
+            td1Node.innerHTML = uname.value
+            td2Node.innerHTML = email.value
+            //添加节点，两个td追加到tr的后面
+            trNode.appendChild(td1Node)
+            trNode.appendChild(td2Node)
+            //添加的节点在最前面，控制tr每次在table的第一个孩子后出现
+            table.insertBefore(trNode,table.children[1])
+            //每次输入完后输入框清空
+            uname.value = ''
+            email.value = ''
+        }
+    </script>
+</body>
+</html>
+<!-- 思路：
+第一步：获取输入框和按钮还有两个父元素，方便后面添加节点
+第二步：设置点击事件
+第三步：判断是否为空，如果是则提示并返回
+第四步：
+    1.创建节点tr 和两个 td
+    2.让td的值等于input输入的值
+    3.添加节点
+    4.添加的位置
+    5.清空input的值 -->
+    

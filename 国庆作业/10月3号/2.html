@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="" id="">
+    <button>验证码</button>
+    <script>
+        var btn = document.querySelector('button')
+        btn.addEventListener('click',function(){
+            btn.disabled = true
+            var num = 60
+            var time = setInterval(function(){
+                if (num > 0) {
+                    num--
+                    btn.innerHTML = `还有${num}秒`
+                }else {
+                    num = 60
+                    btn.disabled = false
+                    btn.innerHTML = '验证码'
+                    clearInterval(time)
+                }
+            },1000)
+        })
+    </script>
+</body>
+</html>

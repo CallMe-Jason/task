@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebAPI 考试</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>出货单</h1>
+        <div class="row">
+            <div class="col">
+                <div class="form-inline">
+                    <button class="btn btn-secondary mr-2">全选 / 反选</button>
+                    <button class="btn btn-danger mr-2 all">删除选中项</button>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon3">订单号</span>
+                        </div>
+                        <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                        <div class="input-group-append"><button class="btn btn-primary">添加</button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <table class="table mt-3">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">订单号</th>
+                            <th scope="col">日期时间</th>
+                            <th scope="col">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row"><input type="checkbox" checked /></th>
+                            <td>TM0230478296348243</td>
+                            <td>2020.6.14</td>
+                            <td>
+                                <button type="button" class="btn btn-primary btn-sm" onclick="up(this)">置顶</button>
+                                <button type="button" class="btn btn-danger btn-sm" onclick="del(this)">删除</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><input type="checkbox" checked /></th>
+                            <td>JD054646548243</td>
+                            <td>2020.6.14</td>
+                            <td>
+                                <button type="button" class="btn btn-primary btn-sm" onclick="up(this)">置顶</button>
+                                <button type="button" class="btn btn-danger btn-sm" onclick="del(this)">删除</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><input type="checkbox" /></th>
+                            <td>JD054633348243</td>
+                            <td>2020.6.14</td>
+                            <td>
+                                <button type="button" class="btn btn-primary btn-sm" onclick="up(this)">置顶</button>
+                                <button type="button" class="btn btn-danger btn-sm" onclick="del(this)">删除</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script>
+        var btn = document.querySelector('.btn-primary')
+        var inp = document.querySelector('.form-control')
+        var tbody = document.querySelector('table tbody')
+        // 增加
+        btn.addEventListener('click', function () {
+            if (inp.value === '') {
+                alert('请输入订单号')
+            } else {
+                var trNode = document.createElement('tr')
+                tbody.appendChild(trNode)
+                var thNode = document.createElement('th')
+                thNode.scope = 'row'
+                trNode.appendChild(thNode)
+                var input = document.createElement('input')
+                thNode.appendChild(input)
+                input.type = 'checkbox'
+                input.setAttribute('checked', true)
+                var td1Node = document.createElement('td')
+                trNode.appendChild(td1Node)
+                td1Node.innerHTML = inp.value.toUpperCase()
+                var td2Node = document.createElement('td')
+                trNode.appendChild(td2Node)
+                var now = new Date()
+                var y = now.getFullYear()
+                var m = (now.getMonth() + 1).toString().padStart(2, '0')
+                var d = now.getDate().toString().padStart(2, '0')
+                td2Node.innerHTML = `${y}.${m}.${d}`
+                var td3Node = document.createElement('td')
+                trNode.appendChild(td3Node)
+                var btn1 = document.createElement('button')
+                var btn2 = document.createElement('button')
+                td3Node.appendChild(btn1)
+                td3Node.appendChild(btn2)
+                btn1.type = 'button'
+                btn2.type = 'button'
+                btn1.className = 'btn btn-primary btn-sm'
+                btn2.className = 'btn btn-danger btn-sm'
+                btn1.setAttribute('onclick', "up(this)")
+                btn2.setAttribute('onclick', "del(this)")
+                btn1.innerHTML = '置顶'
+                btn2.innerHTML = '删除'
+                btn1.style.marginRight = '4px'
+                alert("添加成功")
+            }
+            inp.value = ''
+
+        })
+        var chose = document.querySelector('.btn-secondary')
+        // var num = 0
+        //反选
+        chose.addEventListener('click', function () {
+            var inputs = document.querySelectorAll('input')
+            // num++
+            // if (num % 2 === 0) {
+            //     for(var i = 0; i < inputs.length; i++) {
+            //         inputs[i].checked = false
+            //     }
+            // }else {
+            //     for(var i = 0; i < inputs.length; i++) {
+            //         inputs[i].checked = true
+            //     }
+            // }
+            for (var i = 0; i < inputs.length; i++) {
+                if (inputs[i].checked === true) {
+                    inputs[i].checked = false
+                } else {
+                    inputs[i].checked = true
+                }
+            }
+
+        })
+        //删除
+        function del(one) {
+            var flag = window.confirm('确认要删除吗')
+            if (flag) one.parentNode.parentNode.remove()
+        }
+        //置顶
+        function up(one) {
+            tbody.insertBefore(one.parentNode.parentNode, tbody.children[0])
+        }
+        //选中删除
+        var all = document.querySelector('.all')
+        all.addEventListener('click', function () {
+            var inputs = document.querySelectorAll('tbody input')
+            // console.log(inputs.length);
+            var num = document.querySelectorAll('tbody input:checked')
+            // console.log(num);
+            if (num.length === 0) {
+                alert('请选中要删除的选项')
+            } else {
+                var flag = window.confirm('确认要删除这几项吗？')
+                if (flag) {
+                    for (var i = 0; i < inputs.length; i++) {
+                        if (inputs[i].checked === true) {
+                            inputs[i].parentNode.parentNode.remove()
+                        }
+                    }
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>

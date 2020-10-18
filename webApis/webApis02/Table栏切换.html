@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            box-sizing: border-box;
+        }
+        .none {
+            display: none;
+        }
+        .box {
+            margin: 0 auto;
+            width: 1200px;
+            background-color: #ccc;
+        }
+        ul {
+            width: 1200px;
+        }
+        ul li {
+            float: left;
+            padding: 0 20px;
+            text-align: center;
+            line-height: 50px;
+            cursor: pointer;
+        }
+        .bg {
+            background-color: red;
+        }
+        .box_list {
+            float: left;
+        }
+        .box_body {
+            float: left;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="box_list">
+            <ul>
+                <li class="bg">商品1</li>
+                <li>商品2</li>
+                <li>商品3</li>
+                <li>商品4</li>
+                <li>商品5</li>
+            </ul>
+        </div>
+        <div class="box_body">
+            <div class="none" style = "display: block;">我是商品1的tab</div>
+            <div class="none">我是商品2的tab</div>
+            <div class="none">我是商品3的tab</div>
+            <div class="none">我是商品4的tab</div>
+            <div class="none">我是商品5的tab</div>
+        </div>
+    </div>
+    <script>
+        //获取li和div
+        var lis = document.querySelectorAll('li')
+        var divs = document.querySelectorAll('.box_body div')
+        //返回的是两个伪数组，用for循环遍历
+        for (var i = 0; i < lis.length; i++) {
+            //用for循环来给每个div设置一个属性名和属性值，来当作索引号
+            lis[i].setAttribute('index',i)
+            //添加点击事件,当被点击的那个li时触发函数
+            lis[i].onclick = function () {
+                //添加for循环，让每次点击都会清空一次所有的背景颜色并设置div隐藏
+                for (var j = 0; j < lis.length; j++) {
+                    lis[j].className = ''
+                    divs[j].style.display = 'none'
+                }
+                //指向的那个li背景颜色发生变化
+                this.className = 'bg'
+                //获取点击的设置的属性值,把获取的值赋给index
+                var index = this.getAttribute('index')
+                //作为索引号的index来操作div的显示与隐藏
+                divs[index].style.display = 'block'
+
+            }
+        }
+    </script>
+</body>
+</html>
+<!-- 思路
+第一步：获取lis和divs元素（因为是多个，所以返回的是个伪数组，想要访问就要用for循环）
+第二步：添加点击事件
+    1.当点击哪个li时，哪个li背景会变色，外面设置一个类名，用className调用
+    2.因为点击下一个li时原来的li的颜色还保持改变的样子，所以在里面要再嵌套一个for循环，即每次点击，先清空所有li的颜色，再给点击的那个li添加颜色
+第三部：让底下的div盒子和li保持一致
+    1.因为当鼠标点击的时候里面的for循环已经循环完了，所以此时i的值时5，没办法通过点击获取底下div盒子的索引号，所以要给div手动设置一个索引号，即属性名 （setAttribute('属性名',属性值)，可以利用for循环达成此目的
+    2.当点击事件触发时获取这个div的属性值，并赋值给一个变量
+    3.让div以数组的方式设置样式，完成显示
+    4.同样利用双重for循环每点击一次，先设置所有div隐藏，再让选中的那个div显示出来 -->

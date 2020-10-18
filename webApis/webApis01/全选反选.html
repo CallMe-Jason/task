@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            margin: 0 auto;
+            width: 1000px;
+            height: 500px;
+        }
+
+        table td {
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                    <td>商品</td>
+                    <td>价格</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                    <td>iphone8</td>
+                    <td>8000</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                    <td>iphone8</td>
+                    <td>8000</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                    <td>iphone8</td>
+                    <td>8000</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                    <td>iphone8</td>
+                    <td>8000</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        var all = document.querySelector('thead input')
+        var one = document.querySelectorAll('tbody input')
+        all.onclick = function () {
+            if (all.checked) {
+                for (var i = 0; i < one.length; i++) {
+                    one[i].checked = true
+                }
+            }else {
+                for (var i = 0; i < one.length; i++) {
+                    one[i].checked = false
+            }
+        }
+        }
+    </script>
+</body>
+
+</html>

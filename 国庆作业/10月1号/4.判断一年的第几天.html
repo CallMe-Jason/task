@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var y = Number(prompt('请输入年份'))
+        var m = Number(prompt('请输入月份'))
+        var d = Number(prompt('请输入日期'))
+        var str = `${y}-${m}-${d}`
+        var y = `${y}`
+        var timer 
+        
+        function app (time) {
+            var time = new Date(time)
+            var putTime = time.getTime()
+            // console.log(putTime);
+            function aPP (time) {
+                var time = new Date(time)
+                var putYear = time.getTime()
+                // console.log(putYear);
+                return timer = Math.ceil((putTime - putYear) / 1000 / 60 / 60 / 24 + 1)
+                // console.log(timer);
+            }
+            aPP(y)
+            // console.log(timer);
+            return timer
+        }
+        app(str)
+        // console.log(timer);
+        // console.log(`${y}-${m}-${d}`);
+        alert(`今天是${y}年的第${timer}天`)
+    </script>
+</body>
+</html>

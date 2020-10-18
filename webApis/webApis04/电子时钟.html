@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .box {
+            margin: 50px auto;
+            width: 1000px;
+            height: 100px;
+            border: 1px solid #000;
+            text-align: center;
+            font-size: 50px;
+            font-weight: 700;
+        }
+        .box1 {
+            width: 85px;
+            height: 24px;
+            position: absolute;
+            border: 1px solid pink;
+            color: pink;
+            cursor: pointer;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <div class="box1">聂婷是队霸</div>
+    <script>
+        var box = document.querySelector('.box')
+        function time() {
+            var myDate = new Date()
+            var y = myDate.getFullYear()
+            var m = (myDate.getMonth() + 1).toString().padStart(2,'0')
+            var d = myDate.getDate().toString().padStart(2,'0')
+            var h = myDate.getHours().toString().padStart(2,'0')
+            var f = myDate.getMinutes().toString().padStart(2,'0')
+            var s = myDate.getSeconds().toString().padStart(2,'0')
+            var week = myDate.getDay()
+            var weeks = ['周日','周一','周二','周三','周四','周五','周六']
+            return box.innerHTML =`今天是${y}年${m}月${d}日${h}时${f}分${s}秒${weeks[week]}`
+        }
+        box.style.backgroundColor = 'pink'
+        time()
+        setInterval(function(){
+            time()
+            box.style.borderRadius = '50px'
+            box.style.backgroundColor = 'red'
+        },1000)
+        setInterval(function(){
+            time()
+            box.style.borderRadius = ''
+            box.style.backgroundColor = 'pink'
+        },2000)
+        var box1 = document.querySelector('.box1')
+        document.addEventListener('mousemove',function(e) {
+            var x = e.pageX
+            var y = e.pageY
+            box1.style.left = x - 40 + 'px'
+            box1.style.top = y - 12 + 'px'
+        })
+    </script>
+</body>
+</html>

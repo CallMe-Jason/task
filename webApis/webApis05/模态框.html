@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .box {
+            position: relative;
+            height: 1000px;
+            text-align: center;
+        }
+        .all {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1000px;
+            background-color: rgba(0, 0, 0, .4);
+        }
+        .put {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            margin: 0;
+            width: 500px;
+            height: 500px;
+            border: 1px solid #000;
+            margin: 0 auto;
+            text-align: center;
+            background-color: #ccc;
+            
+        }
+        input {
+            margin: 100px auto;
+            display: block;
+        }
+        .asd {
+            width: 100%;
+            height: 30px;
+            background-color: red;
+            cursor: move;
+        }
+    </style>
+</head>
+<body>
+   <div class="box">
+    <a href="javascript:;">点击</a>
+   </div>
+   <div class="all"></div>
+   <div class="put">
+       <div class="asd"></div>
+       <input type="text" name="" id="">
+       <button>关闭</button>
+   </div>
+   <script>
+       var a = document.querySelector('.box a')
+       var all = document.querySelector('.all')
+       var put = document.querySelector('.put')
+       var btn = document.querySelector('button')
+       var asd = document.querySelector('.asd')
+       a.addEventListener('click',function(){
+           all.style.display = 'block'
+           put.style.display = 'block'
+       })
+       btn.addEventListener('click',function(){
+        all.style.display = 'none'
+           put.style.display = 'none'
+       })
+       asd.addEventListener('mousedown',function(e){
+           var x = e.pageX - put.offsetLeft
+           var y = e.pageY - put.offsetTop
+        //    console.log(x);
+        //    console.log(y);
+           document.addEventListener('mousemove',move)
+           function move(e) {
+                put.style.left = e.pageX - x + 'px'
+                put.style.top = e.pageY - y + 'px'
+           }
+           asd.addEventListener('mouseup',function(){
+            document.removeEventListener('mousemove',move)
+           })
+       })
+   </script>
+</body>
+</html>

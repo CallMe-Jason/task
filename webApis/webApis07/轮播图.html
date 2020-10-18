@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="animate.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            list-style: none;
+        }
+
+        .box {
+            position: relative;
+            margin: 100px auto;
+            padding: 10px;
+            width: 800px;
+            height: 600px;
+            border: 1px solid #000;
+        }
+
+        .box1 {
+            position: absolute;
+            width: 782px;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        ul {
+            position: absolute;
+            width: 1000%;
+        }
+
+        ul li {
+            float: left;
+            width: 780px;
+            height: 580px;
+            background-color: red;
+        }
+
+        ul li:nth-child(2) {
+            background-color: orange;
+        }
+
+        ul li:nth-child(3) {
+            background-color: yellow;
+        }
+
+        ul li:nth-child(4) {
+            background-color: green;
+        }
+
+        ul li:nth-child(5) {
+            background-color: blue;
+        }
+
+        ul li:nth-child(6) {
+            background-color: purple;
+        }
+
+        ul li:nth-child(7) {
+            background-color: pink;
+        }
+
+        .box2 {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+        }
+
+        .box2 ol li {
+            margin: 10px;
+            float: left;
+            width: 30px;
+            height: 30px;
+            background-color: black;
+            transform: rotateZ(45deg);
+            cursor: pointer;
+        }
+
+        .current {
+            border: 4px solid white;
+        }
+
+        .box_right {
+            display: none;
+            z-index: 1;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 0;
+            width: 20px;
+            height: 50px;
+            background-color: rgba(0, 0, 0, .3);
+        }
+
+        .box_left {
+            display: none;
+            z-index: 1;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 0;
+            width: 20px;
+            height: 50px;
+            background-color: rgba(0, 0, 0, .3);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="box_right"></div>
+        <div class="box_left"></div>
+        <div class="box1">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="box2">
+            <ol>
+                <!-- <li class="current"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li> -->
+            </ol>
+        </div>
+    </div>
+    <script>
+        var ul = document.querySelector('ul')
+        var ulLis = document.querySelectorAll('ul li')
+        var ol = document.querySelector('ol')
+        var box1 = document.querySelector('.box1')
+
+
+        for (var i = 0; i < ulLis.length; i++) {
+            var olLi = document.createElement('li')
+            ol.appendChild(olLi)
+        }
+        var olLis = document.querySelectorAll('ol li')
+        var box1Width = box1.offsetWidth
+        // console.log(box1Width);
+        olLis[0].className = 'current'
+
+
+        for (var i = 0; i < olLis.length; i++) {
+            olLis[i].setAttribute('index', i)
+            olLis[i].addEventListener('click', function () {
+                var index = this.getAttribute('index')
+                num = count = index
+                console.log(index);
+                animate(ul, -index * box1Width)
+                for (var j = 0; j < olLis.length; j++) {
+                    olLis[j].className = ''
+                }
+                this.className = 'current'
+            })
+        }
+
+
+        var box = document.querySelector('.box')
+        var right = document.querySelector('.box_right')
+        var left = document.querySelector('.box_left')
+        box.addEventListener('mouseenter', function () {
+            right.style.display = 'block'
+            left.style.display = 'block'
+            clearInterval(timer)
+        })
+        box.addEventListener('mouseleave', function () {
+            right.style.display = 'none'
+            left.style.display = 'none'
+            timer = setInterval(function () {
+                right.click()
+            }, 1000)
+        })
+
+        var count = 0
+        var num = 0
+        ul.appendChild(ul.children[0].cloneNode(true))
+        right.addEventListener('click', function () {
+            if (count === ulLis.length - 1) {
+                ul.style.left = 0 + 'px'
+                count = 0
+            }
+            count++
+            animate(ul, -count * box1Width)
+            // console.log(-count*box1Width);
+            if (num < olLis.length - 1) {
+                num++
+            } else {
+                num = 0
+            }
+            for (var i = 0; i < olLis.length; i++) {
+                olLis[i].className = ''
+            }
+            olLis[num].className = 'current'
+        })
+        left.addEventListener('click', function () {
+            if (count === 0) {
+                count = ulLis.length - 1
+                ul.style.left = -count * box1Width + 'px'
+            } 
+            animate(ul, -count * box1Width)
+            count--
+            if (num > 0) {
+                num--
+            } else {
+                num = olLis.length - 1
+            }
+            for (var i = 0; i < olLis.length; i++) {
+                olLis[i].className = ''
+            }
+            olLis[num].className = 'current'
+        })
+        var timer = setInterval(function () {
+            right.click()
+        }, 1000)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 设置定位 */
+        img {
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        //以文档为元素设置操作
+       document.addEventListener('click',function(e) {
+        //    兼容性
+            var e = e || window.event
+            //设置xy轴
+            var x = e.clientX
+            var y =e.clientY
+            //创建img节点
+            var imgNode = document.createElement('img')
+            //给img节点添加src地址
+            imgNode.src = './images/1.png'
+            //调用内置函数来取100-20之间的随机数
+            var width = getRandom(100,20)
+            //获取的随机宽度赋值给img
+            imgNode.width = width
+            //设置定位位置
+            imgNode.style.left = (x - width / 2) + 'px'
+            imgNode.style.top = (y - width / 2) + 'px'
+            //添加节点
+            document.body.appendChild(imgNode)
+       })
+       //数学函数
+       function getRandom(max,min) {
+           return Math.floor(Math.random() * (max - min + 1) + min)
+       }
+    </script>
+</body>
+</html>

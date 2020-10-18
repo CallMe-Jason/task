@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            box-sizing: border-box;
+        }
+
+        .box {
+            width: 500px;
+            height: 200px;
+            border: 1px solid #000;
+            margin: 100px auto;
+            text-align: center;
+        }
+
+        .box_top {
+            font-size: 40px;
+            font-weight: 700;
+        }
+
+        ul li {
+            display: inline-block;
+            margin: 5px;
+            width: 100px;
+            height: 50px;
+            border: 1px solid #000;
+            text-align: center;
+            line-height: 50px;
+            color: #000;
+        }
+        .box1 {
+            width: 85px;
+            height: 24px;
+            position: absolute;
+            border: 1px solid pink;
+            color: pink;
+            cursor: pointer;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1">聂婷是队霸</div>
+    <div class="box">
+        <div class="box_top">距离砍手节还有</div>
+        <div class="box_time">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        var lis = document.querySelectorAll('li')
+        var box = document.querySelector('.box')
+        function time(time) {
+            var nowDate = new Date()
+            var now = nowDate.getTime()
+            var futureDate = new Date(time)
+            var future = futureDate.getTime()
+            var time = (future - now) / 1000
+            var d = parseInt(time / 60 / 60 / 24).toString().padStart(2,'0')
+            var h = parseInt(time / 60 / 60 % 24).toString().padStart(2,'0')
+            var m = parseInt(time / 60 % 60).toString().padStart(2,'0')
+            var s = parseInt(time % 60).toString().padStart(2,'0')
+            lis[0].innerHTML = `${d}天`
+            lis[1].innerHTML = `${h}小时`
+            lis[2].innerHTML = `${m}分钟`
+            lis[3].innerHTML = `${s}秒`
+        }
+        time('2020-11-11')
+        setInterval(" time('2020-11-11')",1000)
+        setInterval(function(){
+            lis[0].style.backgroundColor = 'red'
+        },100)
+        setInterval(function(){
+            lis[1].style.backgroundColor = 'yellow'
+        },200)
+        setInterval(function(){
+            lis[2].style.backgroundColor = 'green'
+        },300)
+        setInterval(function(){
+            lis[3].style.backgroundColor = 'pink'
+        },400)
+        setInterval(function(){
+            box.style.backgroundColor = 'blue'
+        },500)
+        setInterval(function(){
+            box.style.backgroundColor = ''
+            lis[0].style.backgroundColor = ''
+            lis[1].style.backgroundColor = ''
+            lis[2].style.backgroundColor = ''
+            lis[3].style.backgroundColor = ''
+        },600)
+        var box1 = document.querySelector('.box1')
+        document.addEventListener('mousemove',function(e) {
+            var x = e.pageX
+            var y = e.pageY
+            box1.style.left = x - 40 + 'px'
+            box1.style.top = y - 12 + 'px'
+        })
+    </script>
+</body>
+
+</html>

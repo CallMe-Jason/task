@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .box {
+            padding: 10px;
+            margin: 10px auto;
+            width: 840px;
+            height: 100px;
+            border: 5px double #000;
+        }
+
+        li {
+            float: left;
+            width: 100px;
+            height: 100px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            font-size: 20px;
+            line-height: 100px;
+            margin: 0 10px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <script>
+        var lis = document.querySelectorAll('li')
+        function app() {
+            var now = new Date()
+            var y = now.getFullYear()
+            var m = (now.getMonth() + 1).toString().padStart(2, '0')
+            var d = now.getDate().toString().padStart(2, '0')
+            var h = now.getHours().toString().padStart(2, '0')
+            var f = now.getMinutes().toString().padStart(2, '0')
+            var s = now.getSeconds().toString().padStart(2, '0')
+            var weeks = now.getDay()
+            var arr = ['星期天', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六']
+            for (var i = 0; i < arr.length; i++) {
+                var week = arr[weeks]
+            }
+            for (var i = 0; i < lis.length; i++) {
+                lis[0].innerHTML = `${y}年`
+                lis[1].innerHTML = `${m}月`
+                lis[2].innerHTML = `${d}日`
+                lis[3].innerHTML = `${h}时`
+                lis[4].innerHTML = `${f}分`
+                lis[5].innerHTML = `${s}秒`
+                lis[6].innerHTML = `${week}`
+            }
+        }
+        app()
+        setInterval(app, 1000)
+        function aPP() {
+            function rgb() {
+                min = Math.ceil(0);
+                max = Math.floor(255);
+                return Math.floor(Math.random() * (max - min + 1)) + min; //含最大值，含最小值
+            }
+            var num1 = rgb()
+            var num2 = rgb()
+            var num3 = rgb()
+            // console.log(num1);
+            // console.log(num2);
+            // console.log(num3);
+            document.body.style.backgroundColor = `rgb(${num1},${num2},${num3})`
+        }
+        setInterval(aPP, 1000)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        button {
+            width: 50px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+    <button>关灯</button>
+    <hr>
+    <script>
+        var btn = document.querySelector('button')
+        var body = document.querySelector('body')
+        var flag = 0
+        btn.onclick = function () {
+            if (flag == 0) {
+                body.style.backgroundColor = 'black'
+                flag = 1236487816783678916275
+            }else {
+                body.style.backgroundColor = 'white'
+                flag = 0
+            }
+        }
+    </script>
+</body>
+</html>

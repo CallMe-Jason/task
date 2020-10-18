@@ -1,0 +1,423 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    -webkit-tap-highlight-color: none;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+@font-face {
+    font-family: 'icomoon';
+    src:  url('../fonts/icomoon.eot?yjf3yy');
+    src:  url('../fonts/icomoon.eot?yjf3yy#iefix') format('embedded-opentype'),
+      url('../fonts/icomoon.ttf?yjf3yy') format('truetype'),
+      url('../fonts/icomoon.woff?yjf3yy') format('woff'),
+      url('../fonts/icomoon.svg?yjf3yy#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+  }
+@font:50;
+// 头部广告
+header {
+    width: 15rem;
+    height: 420rem / @font;
+    // background-color: blue;
+    background: url(../upload/图层\ 12.png) no-repeat;
+    background-size: cover;
+    .header_all {
+        position: fixed;
+        display: flex;
+        align-items: flex-end;
+        width: 15rem;
+        height: 110rem / @font;
+        // background-color: red;
+        padding: 0 30rem / @font;
+        .header_top {
+            width: 120rem / @font;
+            height: 50rem / @font;
+            background-color:rgba(0, 0, 0, .3);
+            border-radius: 25rem / @font;
+            font-size: 22rem / @font;
+            text-align: center;
+            line-height: 50rem / @font;
+            color: #fff;
+            &::after {
+                content: ' >';
+                display: inline-block;
+                font-size: 22rem / @font;
+                transform: rotateZ(90deg);
+            }
+        }
+        .header_search {
+            position: relative;
+            // box-sizing: border-box;
+            // overflow: hidden;
+            // margin: 0 45rem / @font 0 20rem / @font;
+            // width: 460rem / @font;
+            // height: 50rem / @font;
+            // background-color: #e1e1e4;
+            // border-radius: 25rem / @font;
+            // input {
+            //     // box-sizing: border-box;
+            //     width: 460rem / @font;
+            // height: 50rem / @font;
+            //     outline: none;
+            //     border: none;
+            //     font-size: 22rem / @font;
+            //     background-color: #e1e1e4;
+            // border: 1px solid #000;
+            // }
+            input {
+                margin: 0 45rem / @font 0 20rem / @font;
+                width: 460rem / @font;
+                height: 50rem / @font;
+                background-color: #e1e1e4;
+                border-radius: 25rem / @font;
+                outline: none;
+                border: none;
+                font-size: 22rem / @font;
+                text-indent: 2em;
+            }
+            &::after {
+                position: absolute;
+                bottom: 10rem / @font;
+                left: 30rem / @font;
+                content: '\e903';
+                font-family: 'icomoon';
+                font-size: 30rem / @font;
+                color: #ccc;
+            }
+        }
+        
+        .header_more {
+            width: 60rem / @font;
+            height: 50rem / @font;
+            background-color: rgba(0, 0, 0, .3);
+            border-radius: 25rem / @font;
+            text-align: center;
+                line-height: 40rem / @font;
+            &::after {
+                display: inline-block;
+                content: '\e902';
+                font-family: 'icomoon';
+                font-size: 22rem / @font;
+                color:rgb(223, 223, 223)
+            }
+        }
+    }
+}
+//banner
+.banner {
+    display: flex;
+    width: 15rem;
+    height: 190rem / @font;
+    // background-color: pink;
+    padding: 0 30rem / @font;
+    .banner1,
+    .banner2,
+    .banner3,
+    .banner4 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 22rem / @font;
+        display: flex;
+        flex: 1;
+        // border: 1px solid #000;
+        h1 {
+            margin: 0;
+            padding: 0;
+            &::after {
+                display: inline-block;
+                margin-bottom: 40rem / @font;
+                font-family: 'icomoon';
+                content: '\e93f';
+                font-size: 60rem / @font;
+                color: green;
+            }
+        }
+        h2 {
+            &::after {
+                display: inline-block;
+                margin-bottom: 40rem / @font;
+                font-family: 'icomoon';
+                content: '\e905';
+                font-size: 60rem / @font;
+                color: orange;
+            }
+        }
+        h3 {
+            &::after {
+                display: inline-block;
+                margin-bottom: 40rem / @font;
+                font-family: 'icomoon';
+                content: '\e94c';
+                font-size: 60rem / @font;
+                color: green;
+            }
+        }
+        h4 {
+            &::after {
+                display: inline-block;
+                margin-bottom: 40rem / @font;
+                font-family: 'icomoon';
+                content: '\e904';
+                font-size: 60rem / @font;
+                color: orange;
+            }
+        }
+    }
+}
+// 内容1
+.main1 {
+    padding: 0 30rem / @font;
+    width: 15rem;
+    height: 350rem / @font;
+    // background-color: pink;
+    .main1_top {
+        font-size: 32rem / @font;
+        font-weight: 700;
+        margin-bottom: 35rem / @font;
+    }
+    .main1_center {
+        font-size: 22rem / @font;
+        color: #ccc;
+        margin-bottom: 35rem / @font;
+    }
+    .main1_main {
+        display: flex;
+        justify-content: space-between;
+        .main1_main1 {
+            width: 220rem / @font;
+            height: 155rem / @font;
+            // background-color: red;
+            background: url(../upload/makati.png) no-repeat;
+            background-size: cover;
+        }
+        .main1_main2 {
+            width: 220rem / @font;
+            height: 155rem / @font;
+            // background-color: red;
+            background: url(../upload/makati.png) no-repeat;
+            background-size: cover;
+            // border: 1px solid #000;
+        }
+        .main1_main3 {
+            width: 220rem / @font;
+            height: 155rem / @font;
+            // background-color: red;
+            background: url(../upload/makati.png) no-repeat;
+            background-size: cover;
+        }
+    }
+}
+// 内容2
+.main2 {
+    width: 15rem;
+    height: 620rem / @font;
+    padding: 0 30rem / @font;
+    // background-color: blue;
+    .main2_top {
+        display: flex;
+        justify-content: space-between;
+        font-size: 32rem / @font;
+        font-weight: 700;
+        margin-bottom: 35rem / @font;
+        span {
+            font-size: 18rem / @font;
+            font-weight: 400; 
+            color: #ccc;
+        }
+    }
+    .main2_center {
+        font-size: 22rem / @font;
+        color: #ccc;
+        margin-bottom: 35rem / @font;
+    }
+    .main2_main {
+        display: flex;
+
+        justify-content: space-between;
+        // width: 15rem;
+        height: 435rem / @font;
+        // background-color: pink;
+        .main2_main1 {
+            width: 340rem / @font;
+            height: 320rem / @font;
+            // background-color: pink;
+            background: url(../upload/main2.png) no-repeat;
+            background-size: cover;
+            margin-bottom: 15rem / @font;
+        }
+        .main2_main2 {
+            width: 340rem / @font;
+            height: 320rem / @font;
+            // background-color: pink;
+            background: url(../upload/main2.png) no-repeat;
+            background-size: cover;
+            margin-bottom: 15rem / @font;
+        }
+        p {
+            font-size: 28rem / @font;
+        }
+        em {
+            font-size: 28rem / @font;
+            color: #ccc;
+            span {
+                color: orange;
+            }
+        }
+    }
+}
+// 内容3
+.main3 {
+    width: 15rem;
+    height: 775rem / @font;
+    padding: 0 30rem / @font;
+    // background-color: pink;
+    p {
+        display: flex;
+        justify-content: space-between;
+        font-size: 32rem / @font;
+        font-weight: 700;
+        margin-bottom: 70rem / @font;
+        span {
+            font-size: 20rem / @font;
+            font-weight: 400;
+            color: #ccc;
+        }
+    }
+    .main3_main1 {
+        margin-bottom: 40rem / @font;
+        display: flex;
+        justify-content: space-between;
+        height: 175rem / @font;
+        // background-color: blue;
+        .main3_main1_left {
+            width: 230rem / @font;
+            height: 175rem / @font;
+            // background-color: pink;
+            background: url(../upload/boy.png) no-repeat -10rem / @font -10rem / @font;
+            background-size: cover;
+        }
+        .main3_main1_right {
+            width: 400rem / @font;
+            height: 175rem / @font;
+            // background-color: pink;
+            font-size: 18rem / @font;
+            .right_top {
+                margin: 35rem / @font 0;
+                font-size: 28rem / @font;
+            }
+            .right_body {
+                color: #ccc;
+            }
+        }
+    }
+}
+// 内容4
+.main4 {
+    width: 15rem;
+    height: 300rem / @font;
+    padding: 0 30rem / @font;
+    // background-color: skyblue;
+    p {
+        font-size: 32rem / @font;
+        // margin-bottom: 30rem / @font;
+    }
+    span {
+        font-size: 20rem / @font;
+        color: #ccc;
+        // margin-bottom: 30rem / @font;
+    }
+    .main4_body {
+        display: flex;
+        justify-content: space-between;
+        // margin-top: 20rem / @font;
+        height: 190rem / @font;
+        // background-color: pink;
+        .body1 {
+            width: 335rem / @font;
+            height: 190rem / @font;
+            // background-color: skyblue;
+            background: url(../upload/fun.png) no-repeat -4rem / @font 1rem / @font;
+            background-size: cover;
+        }
+        .body2 {
+            width: 335rem / @font;
+            height: 190rem / @font;
+            // background-color: skyblue;
+            background: url(../upload/fun.png) no-repeat -4rem / @font 1rem / @font;
+            background-size: cover;
+        }
+    }
+}
+// 底部
+footer {
+    display: flex;
+    width: 15rem;
+    height: 100rem / @font;
+    background-color: #f7f7f7;
+    border-top: 1px solid #000;
+    .box1,
+    .box2,
+    .box3,
+    .box4 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex: 1;
+        // border: 1px solid #000;
+        span {
+            font-size: 18rem / @font;
+            color: #ccc;
+        }
+    }
+    .box1 {
+        span {
+            color: orange;
+        }
+        p {
+            &::after {
+                content: '\e907';
+                font-family: 'icomoon';
+                font-size: 40rem / @font;
+                color: orange;
+            }
+        }
+    }
+    .box2 {
+        p {
+            &::after {
+                color: #ccc;
+                content: '\e906';
+                font-family: 'icomoon';
+                font-size: 40rem / @font;
+            }
+        }
+    }
+    .box3 {
+        p {
+            &::after {
+                color: #ccc;
+                content: '\e93f';
+                font-family: 'icomoon';
+                font-size: 40rem / @font;
+            }
+        }
+    }
+    .box4 {
+        p {
+            &::after {
+                color: #ccc;
+                content: '\e904';
+                font-family: 'icomoon';
+                font-size: 40rem / @font;
+            }
+        }
+    }
+}
